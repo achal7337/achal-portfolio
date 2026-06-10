@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "achal-portfolio",
+  "compatibility_date": "2025-06-01",
+  // Serve the static export produced by `next build` (output: "export").
+  "assets": {
+    "directory": "./out",
+    // Next.js static export emits a 404.html for unknown routes.
+    "not_found_handling": "404-page"
+  }
+}

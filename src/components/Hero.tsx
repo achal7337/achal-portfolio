@@ -92,12 +92,12 @@ export default function Hero() {
             className="mx-auto mb-8 h-32 w-32 overflow-hidden rounded-2xl border border-[var(--color-border)] lg:hidden"
           >
             <Image
-              src="/profile.jpg"
+              src="/profile-square.jpg"
               alt={profile.name}
               width={256}
               height={256}
               priority
-              className="h-full w-full object-cover object-top"
+              className="h-full w-full object-cover object-center"
               style={{ filter: "brightness(1.1) contrast(1.03)" }}
             />
           </motion.div>

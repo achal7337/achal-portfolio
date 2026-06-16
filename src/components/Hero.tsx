@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { profile } from "@/lib/data";
@@ -27,9 +26,7 @@ export default function Hero() {
     target: ref,
     offset: ["start start", "end start"],
   });
-  // Subtle parallax: photo drifts up, content fades as you scroll past
-  const photoY = useTransform(scrollYProgress, [0, 1], [0, 90]);
-  const photoScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  // Subtle parallax: content fades as you scroll past
   const contentY = useTransform(scrollYProgress, [0, 1], [0, 60]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
@@ -47,61 +44,13 @@ export default function Hero() {
         <div className="aurora aurora-3 right-10 top-10 h-[380px] w-[380px]" />
       </div>
 
-      {/* Right-half photo (desktop) with parallax */}
-      <motion.div
-        style={{ y: photoY, scale: photoScale }}
-        className="pointer-events-none absolute right-0 bottom-0 top-24 -z-10 hidden w-1/2 lg:block"
-      >
-        <motion.div
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as const }}
-          className="relative h-full w-full"
-        >
-          <Image
-            src="/profile.jpg"
-            alt={profile.name}
-            fill
-            priority
-            sizes="50vw"
-            className="object-cover object-top"
-            style={{
-              filter: "brightness(1.12) contrast(1.04) saturate(1.05)",
-              WebkitMaskImage:
-                "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.35) 16%, #000 44%)",
-              maskImage:
-                "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.35) 16%, #000 44%)",
-            }}
-          />
-          {/* Soft vertical fades only at the very edges so the face stays bright */}
-          <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[var(--color-bg)] to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[var(--color-bg)] to-transparent" />
-        </motion.div>
-      </motion.div>
-
       <motion.div style={{ y: contentY, opacity: contentOpacity }} className="relative mx-auto max-w-6xl px-5">
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
-          className="w-full text-center lg:max-w-2xl lg:text-left"
+          className="mx-auto w-full max-w-3xl text-center"
         >
-          {/* Mobile photo */}
-          <motion.div
-            variants={item}
-            className="mx-auto mb-8 h-32 w-32 overflow-hidden rounded-2xl border border-[var(--color-border)] lg:hidden"
-          >
-            <Image
-              src="/profile-square.jpg"
-              alt={profile.name}
-              width={256}
-              height={256}
-              priority
-              className="h-full w-full object-cover object-center"
-              style={{ filter: "brightness(1.1) contrast(1.03)" }}
-            />
-          </motion.div>
-
           <motion.div
             variants={item}
             className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-white/5 px-4 py-1.5 text-xs text-[var(--color-muted)] backdrop-blur"
@@ -122,7 +71,7 @@ export default function Hero() {
 
           <motion.p
             variants={item}
-            className="mx-auto mt-6 max-w-xl text-balance text-xl font-medium leading-snug sm:text-2xl lg:mx-0"
+            className="mx-auto mt-6 max-w-xl text-balance text-xl font-medium leading-snug sm:text-2xl"
           >
             I build{" "}
             <span className="text-gradient animate-gradient-x">AI employees</span>, and the
@@ -131,14 +80,14 @@ export default function Hero() {
 
           <motion.p
             variants={item}
-            className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-[var(--color-muted)] sm:text-lg lg:mx-0"
+            className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-[var(--color-muted)] sm:text-lg"
           >
             {profile.blurb}
           </motion.p>
 
           <motion.div
             variants={item}
-            className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start"
+            className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center"
           >
             <a
               href="#venture"
@@ -158,7 +107,7 @@ export default function Hero() {
 
           <motion.div
             variants={item}
-            className="mt-8 flex items-center justify-center gap-2 text-xs text-[var(--color-faint)] lg:justify-start"
+            className="mt-8 flex items-center justify-center gap-2 text-xs text-[var(--color-faint)]"
           >
             <MapPin size={13} />
             {profile.location}

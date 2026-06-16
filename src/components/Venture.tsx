@@ -21,15 +21,13 @@ export default function Venture() {
           <div className="card-hover relative h-full overflow-hidden rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 sm:p-10">
             <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[var(--color-accent)] opacity-20 blur-[100px]" />
             <div className="mb-7 flex items-center gap-3">
-              <span className="inline-flex items-center rounded-xl bg-white px-3 py-2.5 shadow-lg shadow-black/20">
-                <Image
-                  src="/logo-adtech.png"
-                  alt="AD Tech AI, Agentic Decision AI"
-                  width={160}
-                  height={120}
-                  className="h-9 w-auto"
-                />
-              </span>
+              <Image
+                src="/logo-adtech.png"
+                alt="AD Tech AI, Agentic Decision AI"
+                width={297}
+                height={220}
+                className="h-12 w-auto"
+              />
               <span className="rounded-full border border-[var(--color-border)] px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-[var(--color-accent-2)]">
                 {venture.founded}
               </span>

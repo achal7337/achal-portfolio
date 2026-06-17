@@ -6,6 +6,7 @@ export const profile = {
   email: "achalgandhip16@gmail.com",
   phone: "+1 647-573-4377",
   linkedin: "https://linkedin.com/in/achal-gandhi",
+  github: "https://github.com/achal7337",
   company: {
     name: "AD Tech AI",
     url: "https://adtechai.ca/",

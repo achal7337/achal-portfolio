@@ -19,11 +19,7 @@ function Counter({ metric }: { metric: Metric }) {
   const [display, setDisplay] = useState("0");
 
   useEffect(() => {
-    if (!inView) return;
-    if (reduce) {
-      setDisplay(metric.value.toFixed(metric.decimals ?? 0));
-      return;
-    }
+    if (!inView || reduce) return;
     const controls = animate(mv, metric.value, {
       duration: 1.6,
       ease: [0.16, 1, 0.3, 1] as const,
@@ -32,10 +28,14 @@ function Counter({ metric }: { metric: Metric }) {
     return () => controls.stop();
   }, [inView, metric, mv, reduce]);
 
+  // With reduced motion we skip the count-up and derive the final value during
+  // render, rather than setting state from the effect.
+  const shown = reduce && inView ? metric.value.toFixed(metric.decimals ?? 0) : display;
+
   return (
     <span ref={ref} className="tabular-nums">
       {metric.prefix}
-      {display}
+      {shown}
       {metric.suffix}
     </span>
   );

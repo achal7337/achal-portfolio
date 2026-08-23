@@ -52,6 +52,12 @@ export default function Experience() {
                     <span className="text-xs text-[var(--color-faint)]">{job.location}</span>
                   </div>
 
+                  {job.roleNote ? (
+                    <div className="mt-1.5 font-mono text-[11px] text-[var(--color-faint)]">
+                      {job.roleNote}
+                    </div>
+                  ) : null}
+
                   <ul className="mt-4 space-y-2.5">
                     {job.points.map((pt) => (
                       <li

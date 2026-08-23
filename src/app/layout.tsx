@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const title = "Achal Gandhi · Cofounder, AD Tech AI";
+const title = "Achal Gandhi · Strategic Projects Lead, Scale AI";
 const description =
-  "Achal Gandhi is the cofounder of AD Tech AI, building autonomous AI employees, and a senior GenAI program leader at Scale AI. Six years shipping LLM evaluation, RLHF, and coding agent systems in production.";
+  "Achal Gandhi is Strategic Projects Lead, Coding at Scale AI and the cofounder of AD Tech AI, building autonomous AI employees. Six years shipping LLM evaluation, RLHF, and coding agent systems in production.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://achalgandhi.com"),
